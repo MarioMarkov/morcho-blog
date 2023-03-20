@@ -22,7 +22,7 @@ export default function BlogHeader({
           <h4
             className={`mt-5 text-center text-lg md:pl-8 md:text-left ${styles.portableText}`}
           >
-            <PortableText value={description} />
+            <p>Choose Language</p>
           </h4>
         </header>
       )
