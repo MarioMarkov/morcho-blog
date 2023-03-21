@@ -1,7 +1,10 @@
 import PostPreview from 'components/PostPreview'
 import type { Post } from 'lib/sanity.queries'
+import { useIntl } from "react-intl";
 
 export default function MoreStories({ posts }: { posts: Post[] }) {
+  const intl = useIntl();
+  const locale = intl.formatMessage({ id: "page.home.locale" });
   return (
     <section>
       <h2 className="mb-8 text-6xl font-bold leading-tight tracking-tighter md:text-7xl">
@@ -11,7 +14,7 @@ export default function MoreStories({ posts }: { posts: Post[] }) {
         {posts.map((post) => (
           <PostPreview
             key={post._id}
-            title={post.title}
+            title={post.title[locale]}
             coverImage={post.coverImage}
             date={post.date}
             author={post.author}

@@ -20,6 +20,7 @@ export default function IndexPage(props: IndexPageProps) {
   const [heroPost, ...morePosts] = posts || []
   const { title = demo.title, description = demo.description } = settings || {}
 
+
   // const title = intl.formatMessage({ id: "page.home.head.title" });
   // const description = intl.formatMessage({ id: "page.home.head.meta.description" });
 
@@ -30,7 +31,7 @@ export default function IndexPage(props: IndexPageProps) {
       <Layout preview={preview} loading={loading}>
         <Container>
           
-
+          {console.log(heroPost)}
           <BlogHeader title={title} description={description} level={1} />
           {heroPost && (
             <HeroPost

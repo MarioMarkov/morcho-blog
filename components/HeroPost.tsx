@@ -3,24 +3,30 @@ import CoverImage from 'components/CoverImage'
 import Date from 'components/PostDate'
 import type { Post } from 'lib/sanity.queries'
 import Link from 'next/link'
+import { useRouter } from "next/router";
+import { FormattedMessage, useIntl } from "react-intl";
+
 
 export default function HeroPost(
   props: Pick<
     Post,
-    'title' | 'coverImage' | 'date' | 'excerpt' | 'author' | 'slug'
+    'title' | 'coverImage' | 'date' | 'excerpt' | 'author' | 'slug' 
   >
 ) {
   const { title, coverImage, date, excerpt, author, slug } = props
+  const intl = useIntl();
+  const locale = intl.formatMessage({ id: "page.home.locale" });
+
   return (
     <section>
       <div className="mb-8 md:mb-16">
-        <CoverImage slug={slug} title={title} image={coverImage} priority />
+        <CoverImage slug={slug} title={title[locale]} image={coverImage} priority />
       </div>
       <div className="mb-20 md:mb-28 md:grid md:grid-cols-2 md:gap-x-16 lg:gap-x-8">
         <div>
           <h3 className="mb-4 text-4xl leading-tight lg:text-6xl">
             <Link href={`/posts/${slug}`} className="hover:underline">
-              {title || 'Untitled'}
+              {title[locale] || 'Untitled'}
             </Link>
           </h3>
           <div className="mb-4 text-lg md:mb-0">

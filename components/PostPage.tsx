@@ -10,7 +10,7 @@ import SectionSeparator from 'components/SectionSeparator'
 import * as demo from 'lib/demo.data'
 import type { Post, Settings } from 'lib/sanity.queries'
 import { notFound } from 'next/navigation'
-
+import {  useIntl } from "react-intl";
 export interface PostPageProps {
   preview?: boolean
   loading?: boolean
@@ -26,6 +26,9 @@ export default function PostPage(props: PostPageProps) {
   const { title = demo.title } = settings || {}
 
   const slug = post?.slug
+
+  const intl = useIntl();
+  const locale = intl.formatMessage({ id: "page.home.locale" });
 
   if (!slug && !preview) {
     notFound()
@@ -44,7 +47,7 @@ export default function PostPage(props: PostPageProps) {
             <>
               <article>
                 <PostHeader
-                  title={post.title}
+                  title={post.title[locale]}
                   coverImage={post.coverImage}
                   date={post.date}
                   author={post.author}

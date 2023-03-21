@@ -16,38 +16,14 @@ import authorType from './author'
 
  */
 
-  const supportedLanguages = [
+const supportedLanguages = [
     { id: 'en', title: 'English', isDefault: true },
-    { id: 'no', title: 'Norwegian' },
-    { id: 'fr', title: 'French' }
-  ]
+    { id: 'de', title: 'German' },
+    { id: 'bg', title: 'Bulgarian' }
+]
   
-  const baseLanguage = supportedLanguages.find(l => l.isDefault)
+const baseLanguage = supportedLanguages.find(l => l.isDefault)
   
-  const localeString = {
-    title: 'Localized string',
-    name: 'localeString',
-    type: 'object',
-    // Fieldsets can be used to group object fields.
-    // Here we omit a fieldset for the "default language",
-    // making it stand out as the main field.
-    fieldsets: [
-      {
-        title: 'Translations',
-        name: 'translations',
-        options: { collapsible: true }
-      }
-    ],
-    // Dynamically define one field per language
-    fields: supportedLanguages.map(lang => ({
-      title: lang.title,
-      name: lang.id,
-      type: 'string',
-      fieldset: lang.isDefault ? null : 'translations'
-    }))
-  }
-  
-
 export default defineType({
   name: 'post',
   title: 'Post',
@@ -116,7 +92,7 @@ export default defineType({
         date && `on ${format(parseISO(date), 'LLL d, yyyy')}`,
       ].filter(Boolean)
 
-      return { title, media, subtitle: subtitles.join(' ') }
+      return {title, media, subtitle: subtitles.join(' ') }
     },
   },
 })
