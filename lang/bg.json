@@ -4,6 +4,7 @@
     "page.home.title": "Добре дошли до <b>Next.js i18n tutorial</b>",
     "page.home.description": "В момента гледаш страницата на български 🚀",
     "page.home.test" : "тест",
-    "page.home.locale": "bg"
+    "page.home.locale": "bg",
+    "page.home.chooselang": "Изберете език: "
   }
   

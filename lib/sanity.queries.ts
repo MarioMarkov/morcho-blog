@@ -48,16 +48,21 @@ export interface Post {
   _id: string
   title?: {
     _type?: string,
+    en: string
     bg: string,
     de: string,
-    en: string
   }
   coverImage?: any
   date?: string
   excerpt?: string
   author?: Author
   slug?: string
-  content?: any
+  content?: {
+    _type?: string,
+    en: string
+    bg: string,
+    de: string,
+  }
 }
 
 export interface Settings {

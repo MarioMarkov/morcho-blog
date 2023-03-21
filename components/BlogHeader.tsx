@@ -6,6 +6,11 @@ import styles from './BlogHeader.module.css'
 import { useRouter } from "next/router";
 import { FormattedMessage, useIntl } from "react-intl";
 
+import { Gb } from "react-flags-select";
+import { De } from "react-flags-select";
+import { Bg } from "react-flags-select";
+
+
 export default function BlogHeader({
   title,
   description,
@@ -17,7 +22,9 @@ export default function BlogHeader({
 }) {
   const { locales } = useRouter();
   const intl = useIntl();
-  const test = intl.formatMessage({ id: "page.home.test" });
+  const chooseLang = intl.formatMessage({ id: "page.home.chooselang" });
+
+  
 
   switch (level) {
     case 1:
@@ -29,16 +36,19 @@ export default function BlogHeader({
           <h4
             className={`mt-5 text-center text-lg md:pl-8 md:text-left ${styles.portableText}`}
           >
-            <p>Choose Language</p>
-            {[...locales].sort().map((locale) => (
-            <Link key={locale} href="/" locale={locale}>
-              {locale + " "}
-           
+            <span className='font-semibold'> { chooseLang } </span>
+
+            {[...locales].map((locale) => (
+            <Link style={{textDecoration: "none"}} key={locale} href="/" locale={locale}>
+            
+               {locale === "en" ? <Gb className='inline'> </Gb>: 
+               locale === "bg" ? <Bg className='inline'> </Bg> : 
+               <De className='inline'> </De>}  {" "}
                
             </Link>
            
           ))}
-          <p>{ test }</p>
+        
           </h4>
         </header>
       )

@@ -47,6 +47,32 @@ const title =
     }))
   }
 
+
+  const localeContent = {
+    title: 'Localized content',
+    name: 'localeContent',
+    type: 'object',
+    // Fieldsets can be used to group object fields.
+    // Here we omit a fieldset for the "default language",
+    // making it stand out as the main field.
+    fieldsets: [
+      {
+        title: 'Translations',
+        name: 'translations',
+        options: { collapsible: true }
+      }
+    ],
+    // Dynamically define one field per language
+    fields: supportedLanguages.map(lang => ({
+      title: lang.title,
+      name: lang.id,
+      type: 'array',
+      fieldset: lang.isDefault ? null : 'translations',
+      of: [{ type: 'block' }],
+    }))
+  }
+
+
 export default defineConfig({
   basePath: '/studio',
   projectId,
@@ -54,7 +80,7 @@ export default defineConfig({
   title,
   schema: {
     // If you want more content types, you can add them to this array
-    types: [localeString, authorType, postType, settingsType],
+    types: [localeContent,localeString, authorType, postType, settingsType],
   },
   plugins: [
     deskTool({
