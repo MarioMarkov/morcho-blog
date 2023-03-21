@@ -1,0 +1,8 @@
+{
+    "page.home.head.title": "Next.js i18n пример",
+    "page.home.head.meta.description": "Next.js i18n пример - Български",
+    "page.home.title": "Добре дошли до <b>Next.js i18n tutorial</b>",
+    "page.home.description": "В момента гледаш страницата на български 🚀",
+    "page.home.test" : "тест"
+  }
+  

@@ -1,5 +1,13 @@
 /** @type {import('next').NextConfig} */
+
+
 const config = {
+  i18n: {
+    // The locales you want to support in your app
+    locales: ["en", "bg","de"],
+    // The default locale you want to be used when visiting a non-locale prefixed path e.g. `/hello`
+    defaultLocale: "en",
+  },
   images: {
     remotePatterns: [
       { hostname: 'cdn.sanity.io' },

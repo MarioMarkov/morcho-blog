@@ -3,6 +3,9 @@ import Link from 'next/link'
 
 import styles from './BlogHeader.module.css'
 
+import { useRouter } from "next/router";
+import { FormattedMessage, useIntl } from "react-intl";
+
 export default function BlogHeader({
   title,
   description,
@@ -12,6 +15,10 @@ export default function BlogHeader({
   description?: any[]
   level: 1 | 2
 }) {
+  const { locales } = useRouter();
+  const intl = useIntl();
+  const test = intl.formatMessage({ id: "page.home.test" });
+
   switch (level) {
     case 1:
       return (
@@ -23,6 +30,15 @@ export default function BlogHeader({
             className={`mt-5 text-center text-lg md:pl-8 md:text-left ${styles.portableText}`}
           >
             <p>Choose Language</p>
+            {[...locales].sort().map((locale) => (
+            <Link key={locale} href="/" locale={locale}>
+              {locale + " "}
+           
+               
+            </Link>
+           
+          ))}
+          <p>{ test }</p>
           </h4>
         </header>
       )
