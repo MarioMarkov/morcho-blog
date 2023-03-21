@@ -1,4 +1,6 @@
 /** @type {import('next').NextConfig} */
+
+
 const config = {
   i18n: {
     // The locales you want to support in your app
